@@ -5,9 +5,12 @@ import {
     Text,
     Image,
     View,
-    TouchableOpacity
+    TouchableOpacity,
+    FlatList
 } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import VideoItem from './videoItem';
+import data from './data.json';
 
 export default class App extends Component {
     render(){
@@ -24,7 +27,15 @@ export default class App extends Component {
             </TouchableOpacity>
             </View>
           </View>
+
           <View style = {styles.body}>
+          <FlatList
+              data={data.items}
+              renderItem={(video)=><VideoItem video={video.item} />}
+              keyExtractor={(item)=>item.id}
+              ItemSeparatorComponent={()=><View style={{height:0.5,backgroundColor:'#E5E5E5'}}/>}
+          />
+
           </View>
           <View style = {styles.tabBar}>
             <TouchableOpacity style = {styles.tabItem}>
@@ -49,9 +60,10 @@ export default class App extends Component {
     )}
 }
 
+
 const styles = StyleSheet.create({
     container : {
-        flex : 2,
+        flex : 2
     },
     navBar : {
         height : 55,

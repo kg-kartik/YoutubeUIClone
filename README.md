@@ -1,0 +1,1 @@
+Cloning UI of Youtube and fetching some thumbnails and other details of videos to showcase it on the app.
